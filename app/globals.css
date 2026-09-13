@@ -62,3 +62,19 @@ body { min-height: 100vh; overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .initializing__track span { transition: none; }
 }
+
+
+.initializing__brand span {
+  display: inline-block;
+  min-width: .57em;
+  transition: color 90ms ease, text-shadow 90ms ease;
+}
+
+.initializing__brand span.is-red {
+  color: #d14a4a;
+  text-shadow: 0 0 18px rgba(180, 35, 35, .16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .initializing__brand span { transition: none; }
+}
