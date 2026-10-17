@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Manrope, Cormorant_Garamond, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -13,8 +13,12 @@ export const metadata: Metadata = {
   alternates:{canonical:"/"},
   openGraph:{type:"website",url:"/",title:"HAJIHAZ — Building the Unbuilt",description:"One person. Multiple worlds. One interconnected vision.",siteName:"HAJIHAZ"},
   twitter:{card:"summary_large_image",title:"HAJIHAZ — Building the Unbuilt",description:"Founder. Product builder. Law student. One interconnected vision."},
-  icons:{icon:"/icon.svg"},
+  applicationName:"HAJIHAZ",
+  manifest:"/manifest.webmanifest",
+  appleWebApp:{capable:true,title:"HAJIHAZ",statusBarStyle:"default"},
+  icons:{icon:"/icon.svg",apple:"/pwa/apple-touch-icon.png"},
 };
+export const viewport: Viewport = {width:"device-width",initialScale:1,viewportFit:"cover",themeColor:"#0d121b"};
 const person={"@context":"https://schema.org","@type":"Person",name:"Syed Hasan Kuddos Sahib",alternateName:"HAJIHAZ",url:"https://hajihaz.vercel.app",sameAs:["https://github.com/hajihaz"],description:"Founder, product builder and law student from Tamil Nadu, India."};
 export default function RootLayout({children}:Readonly<{children:React.ReactNode}>) {
   return <html lang="en" className={`${sans.variable} ${editorial.variable} ${mono.variable}`}><head><link rel="preload" as="image" href="/core-still.webp"/></head><body><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(person).replace(/</g,"\\u003c")}}/>{children}</body></html>;
