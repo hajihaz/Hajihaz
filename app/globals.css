@@ -439,3 +439,8 @@ footer a:hover,footer button:hover{color:var(--fg)}
  .core-caption{left:24px;right:auto;bottom:3%;text-align:left;font-size:6px}
  .core-interaction{right:24px;bottom:3%}
 }
+
+/* Consent first: no telemetry is installed until the user explicitly accepts. */
+.portfolio-analytics-control{position:fixed;bottom:max(16px,env(safe-area-inset-bottom));right:16px;z-index:130;width:min(340px,calc(100vw - 32px));padding:14px 16px;border:1px solid #7e7e7e88;border-radius:13px;background:#0d121bef;color:#f0eee9;box-shadow:0 12px 40px #0005;font-family:var(--font-sans),sans-serif;font-size:12px;line-height:1.5;letter-spacing:normal}
+.portfolio-analytics-control strong{font-size:13px;color:#fff}.portfolio-analytics-control p{margin:7px 0 12px;color:#dfdcd6}.portfolio-analytics-actions{display:flex;gap:8px;flex-wrap:wrap}.portfolio-analytics-control button{min-height:44px;min-width:80px;border:1px solid #bcab82;border-radius:8px;padding:8px 13px;background:#171b22;color:#fff;cursor:pointer;font:inherit}.portfolio-analytics-actions button:first-child{background:#bcab82;color:#12151a}.portfolio-analytics-control button:focus-visible{outline:2px solid #f3dca2;outline-offset:3px}.portfolio-analytics-manage{width:100%;text-align:center}
+@media(max-width:600px){.portfolio-analytics-control{bottom:max(8px,env(safe-area-inset-bottom));right:8px;width:min(330px,calc(100vw - 16px));padding:10px 12px}}
