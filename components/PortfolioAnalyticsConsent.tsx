@@ -3,6 +3,8 @@ import {useEffect,useState} from 'react';
 import {Analytics} from '@vercel/analytics/next';
 import {analyticsPrivacySignal,safePortfolioAnalyticsUrl} from '../lib/portfolio-analytics-policy';
 
+// The provider must be enabled and its free-use/spend budget verified first.
+const ENABLED=process.env.NEXT_PUBLIC_HAJIHAZ_ANALYTICS_ENABLED==='enabled';
 const KEY='hajihaz-portfolio-analytics-consent-v1';
 type Choice='yes'|'no'|'blocked'|null|undefined;
 /** Consent is never inferred from site use or a separate product's cookie. */
@@ -10,6 +12,7 @@ export default function PortfolioAnalyticsConsent(){
  const [choice,setChoice]=useState<Choice>(undefined);
  const [show,setShow]=useState(false);
  useEffect(()=>{
+  if(!ENABLED)return;
   const gp=(navigator as Navigator & {globalPrivacyControl?:boolean}).globalPrivacyControl;
   if(analyticsPrivacySignal(navigator.doNotTrack,gp)){setChoice('blocked');return;}
   try{
@@ -23,7 +26,7 @@ export default function PortfolioAnalyticsConsent(){
   const wasActive=choice==='yes';setChoice(next);setShow(false);
   if(next==='no'&&wasActive)window.location.reload(); // Remove any previously initialized SDK listeners.
  }
- if(choice===undefined||choice==='blocked')return null;
+ if(!ENABLED||choice===undefined||choice==='blocked')return null;
  return <>
    {choice==='yes'&&<Analytics beforeSend={event=>{
     const url=safePortfolioAnalyticsUrl(event.url,window.location.origin);

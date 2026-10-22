@@ -14,3 +14,10 @@ test('DNT and global privacy control override any voluntary analytics choice',()
  assert.equal(analyticsPrivacySignal('0',true),true);
  assert.equal(analyticsPrivacySignal(null,undefined),false);
 });
+
+test('portfolio collector is default-off until owner enables the provider and spend controls',async()=>{
+ const {readFileSync}=await import('node:fs');
+ const source=readFileSync(new URL('../components/PortfolioAnalyticsConsent.tsx',import.meta.url),'utf8');
+ assert.match(source,/NEXT_PUBLIC_HAJIHAZ_ANALYTICS_ENABLED==='enabled'/);
+ assert.match(source,/if\(!ENABLED\|\|choice===undefined\|\|choice==='blocked'\)return null;/);
+});
