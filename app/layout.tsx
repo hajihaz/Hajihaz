@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Cormorant_Garamond, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import PortfolioAnalyticsConsent from "../components/PortfolioAnalyticsConsent";
 
 const sans=Manrope({subsets:["latin"],display:"swap",variable:"--font-sans"});
 const editorial=Cormorant_Garamond({weight:["500","600"],style:["normal","italic"],subsets:["latin"],display:"swap",variable:"--font-editorial"});
@@ -21,5 +22,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {width:"device-width",initialScale:1,viewportFit:"cover",themeColor:"#0d121b"};
 const person={"@context":"https://schema.org","@type":"Person",name:"Syed Hasan Kuddos Sahib",alternateName:"HAJIHAZ",url:"https://hajihaz.vercel.app",sameAs:["https://github.com/hajihaz"],description:"Founder, product builder and law student from Tamil Nadu, India."};
 export default function RootLayout({children}:Readonly<{children:React.ReactNode}>) {
-  return <html lang="en" className={`${sans.variable} ${editorial.variable} ${mono.variable}`}><head><meta name="apple-mobile-web-app-capable" content="yes"/><link rel="preload" as="image" href="/core-still.webp"/></head><body><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(person).replace(/</g,"\\u003c")}}/>{children}</body></html>;
+  return <html lang="en" className={`${sans.variable} ${editorial.variable} ${mono.variable}`}><head><meta name="apple-mobile-web-app-capable" content="yes"/><link rel="preload" as="image" href="/core-still.webp"/></head><body><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(person).replace(/</g,"\\u003c")}}/>{children}<PortfolioAnalyticsConsent/></body></html>;
 }

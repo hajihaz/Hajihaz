@@ -16,7 +16,7 @@ Repository: https://github.com/hajihaz/Hajihaz
 - Working architecture layers, three local lab experiments and HAJI OS (Command/Ctrl + K).
 - First-visit letter resolution, native scrolling, motion controls, system reduced-motion support and progressive heading reveals.
 - Canonical metadata, structured person data, a custom H favicon, social card, sitemap and robots.
-- No analytics, contact database, paid API service or owner-only data is required by this portfolio.
+- The portfolio is static and requires no contact database or owner-only data. Optional Vercel Web Analytics is consent-first, off by default and must be enabled separately in the authorized Vercel project without paid upgrades. Until that project setting is enabled, the integration cannot provide real counters. Only allowlisted public `/` pageview URLs are sent without query strings. Reporting resides in the project owner's Vercel Analytics dashboard, not a public site admin.
 
 ## Stack
 
@@ -75,3 +75,9 @@ The pre-rebuild version is retained in Git history at `7aa64c8` and in local bra
 3. Add approved real product screenshots to complement the conceptual project worlds.
 
 These are future additions, not pending implementation in the delivered first version.
+
+## Optional privacy-preserving portfolio analytics
+
+A separate `hajihaz-portfolio-analytics-consent-v1` browser preference is required before the Vercel Analytics SDK is mounted. The user may decline or change the setting from the always-visible Privacy settings control. DNT/GPC suppress optional tracking regardless of previous choices. Opt-out after enabling reloads the page to release existing script listeners. Storage-disabled browsers are treated as declined. The SDK only receives the site's root path stripped of URL query/hash; private or unknown routes are rejected.
+
+The Vercel project owner must enable Web Analytics explicitly in Vercel's Analytics settings and review the current included usage/spend limit. **Do not enable chargeable add-ons or assume the account can incur overages for free.** Without that project-level enablement, reporting is unavailable. The integration does not include an in-site owner dashboard because this static personal portfolio has no authenticated admin system; owner reports stay in Vercel with Vercel's access control. This is partial readiness, not end-to-end certification until opted-in real traffic appears on the owner dashboard.
